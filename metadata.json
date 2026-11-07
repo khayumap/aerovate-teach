@@ -1,0 +1,6 @@
+{
+  "name": "Aerovate - Class 5 Kerala Teaching Platform",
+  "description": "Interactive MERN-stack teaching platform for Class 5 teachers and students in Kerala, featuring bilingual English & Malayalam lessons, interactive science simulations, quizzes, and teacher dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
