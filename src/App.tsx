@@ -7,8 +7,10 @@ import { TeacherDashboard } from './pages/TeacherDashboard';
 import { RockLabView } from './pages/RockLabView';
 import { WhatsAppTeacherModal } from './components/WhatsAppTeacherModal';
 import { AuthModals } from './components/AuthModals';
+import { MobileBottomNav } from './components/MobileBottomNav';
+import { UserGuideModal } from './components/UserGuideModal';
 import { Language, Student, TeacherProfile } from './types';
-import { Phone, MessageSquare, BookOpen, Sparkles, School, Heart, ShieldCheck } from 'lucide-react';
+import { Phone, MessageSquare, BookOpen, Sparkles, School, Heart, ShieldCheck, FileText } from 'lucide-react';
 
 const SESSION_KEY = 'aerovate_jesni_class5_session';
 
@@ -17,6 +19,7 @@ export default function App() {
   const [currentTab, setCurrentTab] = useState<string>('home');
   const [selectedChapterId, setSelectedChapterId] = useState<string | number>(1);
   const [activeQuizId, setActiveQuizId] = useState<string>('rocks-minerals-ch1');
+  const [showGuideModal, setShowGuideModal] = useState(false);
 
   // Auth & Session State (loaded from localStorage)
   const [currentUser, setCurrentUser] = useState<{
@@ -84,6 +87,7 @@ export default function App() {
         onOpenTeacherLogin={() => setShowTeacherLogin(true)}
         onOpenStudentLogin={() => setShowStudentLogin(true)}
         onOpenWhatsApp={() => setShowWhatsAppModal(true)}
+        onOpenGuide={() => setShowGuideModal(true)}
       />
 
       {/* Main Content Router */}
@@ -97,6 +101,7 @@ export default function App() {
             onOpenRockLab={() => setCurrentTab('rock-lab')}
             onOpenWhatsApp={() => setShowWhatsAppModal(true)}
             onOpenStudentLogin={() => setShowStudentLogin(true)}
+            onOpenGuide={() => setShowGuideModal(true)}
           />
         )}
 
@@ -168,13 +173,13 @@ export default function App() {
         )}
       </main>
 
-      {/* Floating Teacher WhatsApp Help Button */}
+      {/* Floating Teacher WhatsApp Help Button (Responsive positioning) */}
       <button
         onClick={() => setShowWhatsAppModal(true)}
-        className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-4 py-3 shadow-2xl flex items-center gap-2 font-bold text-xs transition-all hover:scale-105 active:scale-95 border-2 border-white"
+        className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full p-3 sm:px-4 sm:py-3 shadow-2xl flex items-center gap-2 font-bold text-xs transition-all hover:scale-105 active:scale-95 border-2 border-white"
         title="Ask Teacher Mrs. Jesni on WhatsApp (7736419753)"
       >
-        <MessageSquare className="w-4 h-4 fill-current" />
+        <MessageSquare className="w-5 h-5 sm:w-4 sm:h-4 fill-current shrink-0" />
         <span className="hidden sm:inline">Ask Mrs. Jesni: 7736419753</span>
       </button>
 
@@ -204,10 +209,10 @@ export default function App() {
       />
 
       {/* School & Creator Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-16 pt-8 pb-10">
+      <footer className="bg-white border-t border-slate-200 mt-16 pt-8 pb-28 md:pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-center md:text-left">
               <School className="w-4 h-4 text-blue-600 shrink-0" />
               <span className="font-bold text-slate-800">
                 YAMANIYYA ENGLISH MEDIUM SCHOOL
@@ -217,6 +222,15 @@ export default function App() {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={() => setShowGuideModal(true)}
+                className="text-indigo-700 font-semibold flex items-center gap-1 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1 rounded-full border border-indigo-200 transition-colors"
+                title="Open and Download PDF User Guide"
+              >
+                <FileText className="w-3.5 h-3.5 text-indigo-600" />
+                <span>User Guide (PDF)</span>
+              </button>
+
               <span className="text-emerald-700 font-semibold flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                 <Phone className="w-3.5 h-3.5" />
                 <span>Teacher: Mrs. Jesni · +91 7736419753</span>
@@ -228,7 +242,7 @@ export default function App() {
           </div>
 
           <div className="border-t border-slate-100 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 text-slate-700 font-semibold">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-slate-700 font-semibold">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-[11px] shadow-sm">
                 <Sparkles className="w-3 h-3 text-yellow-300" />
                 Copyrights Adnan Ahmad A P
@@ -238,7 +252,7 @@ export default function App() {
               </span>
             </div>
 
-            <div className="flex items-center gap-1 text-slate-500 text-[11px]">
+            <div className="flex items-center justify-center gap-1 text-slate-500 text-[11px]">
               <span>Built by</span>
               <span className="font-bold text-slate-800 hover:text-blue-600 transition-colors">
                 Adnan Ahmad A P
@@ -249,6 +263,23 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* User Guide PDF & Viewer Modal */}
+      <UserGuideModal
+        isOpen={showGuideModal}
+        onClose={() => setShowGuideModal(false)}
+        lang={lang}
+      />
+
+      {/* Mobile Fixed Bottom Navigation Bar */}
+      <MobileBottomNav
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        lang={lang}
+        currentUser={currentUser}
+        onOpenTeacherLogin={() => setShowTeacherLogin(true)}
+        onOpenStudentLogin={() => setShowStudentLogin(true)}
+      />
     </div>
   );
 }

@@ -330,11 +330,11 @@ export const QuizView: React.FC<QuizViewProps> = ({
           )}
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
             <button
               onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}
               disabled={currentIndex === 0}
-              className="px-4 py-2 border border-slate-200 hover:bg-slate-50 disabled:opacity-30 rounded-lg text-xs font-bold text-slate-700 flex items-center gap-1.5 transition-colors"
+              className="px-4 py-2.5 border border-slate-200 hover:bg-slate-50 disabled:opacity-30 rounded-xl text-xs font-bold text-slate-700 flex items-center gap-1.5 transition-colors min-h-[44px]"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>{lang === 'en' ? 'Previous' : 'മുൻപത്തേത്'}</span>
@@ -343,7 +343,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
             {currentIndex < quiz.questions.length - 1 ? (
               <button
                 onClick={() => setCurrentIndex(i => Math.min(quiz.questions.length - 1, i + 1))}
-                className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors"
+                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors min-h-[44px]"
               >
                 <span>{lang === 'en' ? 'Next Question' : 'അടുത്ത ചോദ്യം'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -352,10 +352,10 @@ export const QuizView: React.FC<QuizViewProps> = ({
               <button
                 onClick={handleSubmitQuiz}
                 disabled={submitting || answeredCount === 0}
-                className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-md transition-all scale-105"
+                className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-md transition-all active:scale-95 min-h-[44px]"
               >
-                <Trophy className="w-4 h-4 text-amber-300" />
-                <span>{submitting ? 'Grading...' : lang === 'en' ? 'Submit & Get Scorecard' : 'ക്വിസ് പൂർത്തിയാക്കുക'}</span>
+                <Trophy className="w-4 h-4 text-amber-300 shrink-0" />
+                <span>{submitting ? 'Grading...' : lang === 'en' ? 'Submit Quiz' : 'ക്വിസ് പൂർത്തിയാക്കുക'}</span>
               </button>
             )}
           </div>

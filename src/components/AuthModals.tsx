@@ -160,7 +160,7 @@ export const AuthModals: React.FC<AuthModalsProps> = ({
       {/* Teacher Login Modal (Inputs are strictly blank, manual typing required) */}
       {showTeacherModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={onCloseTeacherModal}
               className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-700 rounded-lg transition-colors"

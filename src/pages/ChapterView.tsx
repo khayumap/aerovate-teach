@@ -111,7 +111,7 @@ export const ChapterView: React.FC<ChapterViewProps> = ({
             {lang === 'en' ? chapter.summary : chapter.summaryMl}
           </p>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
             <AudioSpeechButton
               textToRead={`${chapter.title}. ${chapter.summary}. ${activeSection.content}`}
               lang={lang}
@@ -120,27 +120,60 @@ export const ChapterView: React.FC<ChapterViewProps> = ({
 
             <button
               onClick={() => onOpenQuiz('rocks-minerals-ch1')}
-              className="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-amber-950 text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-1.5 hover:scale-105"
+              className="w-full sm:w-auto justify-center px-4 py-2 bg-amber-400 hover:bg-amber-300 text-amber-950 text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-1.5 active:scale-95"
             >
-              <Trophy className="w-4 h-4 text-amber-900" />
+              <Trophy className="w-4 h-4 text-amber-900 shrink-0" />
               <span>{lang === 'en' ? 'Take Grand Quiz (100 pts)' : 'ക്വിസ് എഴുതാം (100 pts)'}</span>
             </button>
 
             <button
               onClick={onOpenWhatsApp}
-              className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-1.5"
+              className="w-full sm:w-auto justify-center px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-1.5 active:scale-95"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <Phone className="w-3.5 h-3.5 shrink-0" />
               <span>Mrs. Jesni (+91 7736419753)</span>
             </button>
           </div>
         </div>
       </div>
 
+      {/* Mobile Horizontal Section Scroller (Quick access on phones) */}
+      <div className="lg:hidden mb-6">
+        <div className="text-xs font-bold text-slate-600 mb-2 px-1 flex items-center justify-between">
+          <span>{lang === 'en' ? 'Select Section (1-7):' : 'പാഠഭാഗം തിരഞ്ഞെടുക്കൂ:'}</span>
+          <span className="text-[11px] font-normal text-blue-600">
+            {activeSectionIdx + 1} of {chapter.sections.length}
+          </span>
+        </div>
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+          {chapter.sections.map((sec, idx) => {
+            const isActive = activeSectionIdx === idx;
+            return (
+              <button
+                key={idx}
+                onClick={() => setActiveSectionIdx(idx)}
+                className={`px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all flex items-center gap-1.5 ${
+                  isActive
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'bg-white text-slate-700 border border-slate-200 hover:border-blue-300'
+                }`}
+              >
+                <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${
+                  isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                }`}>
+                  {idx + 1}
+                </span>
+                <span>{lang === 'en' ? sec.title : sec.titleMl || sec.title}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Main Study Zone: Split Layout (Section Navigation vs Interactive Lesson Deck) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-        {/* Left Side: Section Directory */}
-        <div className="lg:col-span-4 space-y-2">
+        {/* Left Side: Desktop Section Directory */}
+        <div className="hidden lg:block lg:col-span-4 space-y-2">
           <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 px-1">
             {lang === 'en' ? 'Lesson Table of Contents:' : 'പാഠഭാഗങ്ങൾ:'}
           </div>
