@@ -218,9 +218,12 @@ export const ChapterView: React.FC<ChapterViewProps> = ({
             {activeSectionIdx === 2 && (
               <div className="mb-6 rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-950">
                 <img
-                  src="/src/assets/images/earth_layers_crust_mantle_1794061036677.jpg"
+                  src="/images/earth_layers_crust_mantle_1794061036677.jpg"
                   alt="3D diagram of Earth's internal structure showing Crust, Mantle, and Core"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
                   className="w-full h-64 object-cover object-center"
                 />
                 <div className="p-3 bg-slate-900 text-slate-200 text-xs flex items-center justify-between">

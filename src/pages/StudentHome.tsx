@@ -71,9 +71,10 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
       <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-slate-900 text-white">
         <div className="absolute inset-0">
           <img
-            src="/src/assets/images/hero_kerala_classroom_1794061036802.jpg"
+            src="/images/hero_kerala_classroom_1794061036802.jpg"
             alt="Classroom with science teacher Mrs. Jesni and Class 5A & 5B students at Yamaniyya English Medium School"
             referrerPolicy="no-referrer"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
             className="w-full h-full object-cover opacity-35"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-900/90 to-transparent"></div>
@@ -239,23 +240,91 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
             </div>
           </div>
 
-          <div className="lg:w-1/2">
-            <div className="rounded-2xl overflow-hidden border border-amber-300 shadow-md bg-white">
-              <img
-                src="/src/assets/images/rocks_and_minerals_specimens_1794061036722.jpg"
-                alt="High-resolution display of polished rock specimens including quartz, obsidian, pumice, and granite"
-                referrerPolicy="no-referrer"
-                className="w-full h-72 object-cover object-center"
-              />
-              <div className="p-3 bg-white border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
-                <span>Class 5 Science Specimen Showcase</span>
+          <div className="lg:w-1/2 w-full">
+            <div className="bg-white/95 rounded-2xl p-5 border border-amber-200 shadow-md">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <span className="p-1 bg-amber-100 text-amber-800 rounded-md">🔬</span>
+                  <span className="text-xs font-bold text-slate-900">
+                    {lang === 'en' ? 'Class 5 Rock Specimens Deck' : 'പാറകളുടെ ശേഖരം'}
+                  </span>
+                </div>
                 <button
                   onClick={onOpenRockLab}
-                  className="text-blue-600 font-bold hover:underline"
+                  className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors"
                 >
-                  Explore in Lab →
+                  <span>{lang === 'en' ? 'Open Full Lab' : 'ലാബ് തുറക്കൂ'}</span>
+                  <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
+
+              {/* 4 Crisp Specimen Cards */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-2xl">🧼</span>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Igneous</span>
+                    </div>
+                    <div className="font-bold text-xs text-slate-900">Pumice (പ്യൂമിസ്)</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Spongy stone with gas bubbles.</div>
+                  </div>
+                  <div className="text-[10px] font-semibold text-blue-700 mt-2 bg-blue-50/80 px-2 py-0.5 rounded">
+                    🌊 Floats on water!
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-2xl">🪨</span>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Igneous</span>
+                    </div>
+                    <div className="font-bold text-xs text-slate-900">Granite (ഗ്രാനൈറ്റ്)</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Slow-cooled hard magma.</div>
+                  </div>
+                  <div className="text-[10px] font-semibold text-slate-700 mt-2 bg-slate-100 px-2 py-0.5 rounded">
+                    🏠 Kitchen counters
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-2xl">🗡️</span>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Igneous</span>
+                    </div>
+                    <div className="font-bold text-xs text-slate-900">Obsidian (ഒബ്സീഡിയൻ)</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Volcanic natural glass.</div>
+                  </div>
+                  <div className="text-[10px] font-semibold text-purple-700 mt-2 bg-purple-50 px-2 py-0.5 rounded">
+                    ✨ Sharp surgical glass
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-2xl">🏰</span>
+                      <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">Sedimentary</span>
+                    </div>
+                    <div className="font-bold text-xs text-slate-900">Sandstone (മണൽക്കല്ല്)</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Pressed grains of sand.</div>
+                  </div>
+                  <div className="text-[10px] font-semibold text-amber-800 mt-2 bg-amber-50 px-2 py-0.5 rounded">
+                    🏛️ Delhi Red Fort
+                  </div>
+                </div>
+              </div>
+
+              {/* Lab Action */}
+              <button
+                onClick={onOpenRockLab}
+                className="mt-3.5 w-full py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>{lang === 'en' ? 'Launch Interactive Rock & Mineral Lab' : 'റോക്ക് ലാബിൽ പരീക്ഷിക്കാം'}</span>
+              </button>
             </div>
           </div>
         </div>
