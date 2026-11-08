@@ -8,7 +8,7 @@ import { RockLabView } from './pages/RockLabView';
 import { WhatsAppTeacherModal } from './components/WhatsAppTeacherModal';
 import { AuthModals } from './components/AuthModals';
 import { Language, Student, TeacherProfile } from './types';
-import { Phone, MessageSquare, BookOpen, Sparkles, School } from 'lucide-react';
+import { Phone, MessageSquare, BookOpen, Sparkles, School, Heart, ShieldCheck } from 'lucide-react';
 
 const SESSION_KEY = 'aerovate_jesni_class5_session';
 
@@ -203,28 +203,48 @@ export default function App() {
         }}
       />
 
-      {/* School Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-16 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* School & Creator Footer */}
+      <footer className="bg-white border-t border-slate-200 mt-16 pt-8 pb-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div className="flex items-center gap-2">
-              <School className="w-4 h-4 text-blue-600" />
-              <span className="font-semibold text-slate-800">
+              <School className="w-4 h-4 text-blue-600 shrink-0" />
+              <span className="font-bold text-slate-800">
                 YAMANIYYA ENGLISH MEDIUM SCHOOL
               </span>
               <span>·</span>
-              <span>Class 5A & 5B Science Portal</span>
+              <span className="text-blue-700 font-medium">Class 5A & 5B Science Portal</span>
             </div>
 
-            <div className="flex items-center gap-4">
-              <span className="text-emerald-700 font-semibold flex items-center gap-1">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <span className="text-emerald-700 font-semibold flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                 <Phone className="w-3.5 h-3.5" />
-                <span>Helpline: +91 7736419753</span>
+                <span>Teacher: Mrs. Jesni · +91 7736419753</span>
               </span>
-              <span>·</span>
-              <span>Teacher: Mrs. Jesni</span>
-              <span>·</span>
-              <span>Render & MongoDB Atlas Ready</span>
+              <span className="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full border border-blue-200 font-medium">
+                MongoDB Atlas & Render Ready
+              </span>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-100 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2 text-slate-700 font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-[11px] shadow-sm">
+                <Sparkles className="w-3 h-3 text-yellow-300" />
+                Copyrights Adnan Ahmad A P
+              </span>
+              <span className="text-slate-500 font-normal">
+                Copyright © 2026 Adnan Ahmad A P. All rights reserved.
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1 text-slate-500 text-[11px]">
+              <span>Built by</span>
+              <span className="font-bold text-slate-800 hover:text-blue-600 transition-colors">
+                Adnan Ahmad A P
+              </span>
+              <span>for Mrs. Jesni</span>
+              <Heart className="w-3 h-3 text-red-500 fill-current inline mx-0.5" />
             </div>
           </div>
         </div>
