@@ -85,6 +85,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
     const payload = {
       studentName: currentStudent?.name || 'Class 5 Explorer',
       rollNumber: currentStudent?.rollNumber || 1,
+      division: currentStudent?.division || '5A',
       answers: answersArray
     };
 
@@ -263,7 +264,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
           {/* Hint Card */}
           {showHint[currentIndex] && currentQ.hint && (
             <div className="mb-4 p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-xs text-amber-900">
-              💡 <strong>Teacher Anitha’s Hint:</strong> {currentQ.hint}
+              💡 <strong>Teacher Mrs. Jesni’s Hint:</strong> {currentQ.hint}
             </div>
           )}
 

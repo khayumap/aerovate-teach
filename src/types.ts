@@ -37,7 +37,7 @@ export interface Chapter {
   chapterNumber: number;
   title: string;
   titleMl: string;
-  subject: 'Science' | 'EVS' | 'Maths' | 'English' | 'Malayalam';
+  subject: string;
   grade: string;
   state: string;
   summary: string;
@@ -89,8 +89,8 @@ export interface Student {
   _id?: string;
   name: string;
   rollNumber: number;
-  division?: string;
-  school?: string;
+  division: '5A' | '5B' | string;
+  school: string;
   avatarEmoji?: string;
   stars?: number;
   badges?: Badge[];
@@ -111,6 +111,7 @@ export interface Submission {
   quizTitle: string;
   studentName: string;
   rollNumber: number;
+  division?: '5A' | '5B' | string;
   score: number;
   totalQuestions: number;
   percentage: number;
@@ -122,6 +123,8 @@ export interface DashboardStats {
   totalChapters: number;
   totalQuizzes: number;
   totalStudents: number;
+  students5A?: number;
+  students5B?: number;
   totalSubmissions: number;
   averageScore: number;
   teacherPhone: string;

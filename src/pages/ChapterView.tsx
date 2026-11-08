@@ -131,7 +131,7 @@ export const ChapterView: React.FC<ChapterViewProps> = ({
               className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>Teacher Anitha (+91 7736419753)</span>
+              <span>Mrs. Jesni (+91 7736419753)</span>
             </button>
           </div>
         </div>
@@ -180,10 +180,10 @@ export const ChapterView: React.FC<ChapterViewProps> = ({
           <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 text-xs text-emerald-950 mt-6 shadow-sm">
             <div className="flex items-center gap-2 mb-2 font-bold text-emerald-900">
               <span className="text-lg">👩‍🏫</span>
-              <span>Class 5 Teacher Support</span>
+              <span>Class 5 Science Support</span>
             </div>
             <p className="text-[11px] text-emerald-800 leading-relaxed mb-3">
-              Mrs. Anitha Kumar is ready to guide Class 5 learners in Kerala with personalized homework help.
+              Mrs. Jesni is available to guide Class 5A & 5B students at Yamaniyya English Medium School with personalized help.
             </p>
             <button
               onClick={onOpenWhatsApp}

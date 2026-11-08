@@ -4,12 +4,12 @@ export const seedChapters = [
     title: "Rocks and Minerals",
     titleMl: "പാറകളും ധാതുക്കളും",
     subject: "Science",
-    grade: "Class 5",
-    state: "Kerala State Board & CBSE",
+    grade: "Class 5 (5A & 5B)",
+    state: "Kerala Syllabus · YAMANIYYA ENGLISH MEDIUM SCHOOL",
     summary: "Discover the amazing rocks beneath our feet! Learn about the 3 layers of Earth, metallic vs non-metallic minerals, Igneous, Sedimentary, and Metamorphic rocks, and fossil fuels like coal and petroleum.",
     summaryMl: "നമ്മുടെ പാദങ്ങൾക്ക് കീഴെയുള്ള അത്ഭുതകരമായ പാറകളെ അറിയാം! ഭൂമിയുടെ 3 പാളികൾ, ലോഹ-അലോഹ ധാതുക്കൾ, ആഗ്നേയ-അവസാദ-കായാന്തരിത ശിലകൾ, കൽക്കരിയും പെട്രോളിയവും എന്നിവയെക്കുറിച്ച് എളുപ്പത്തിൽ പഠിക്കാം.",
     teacherPhone: "7736419753",
-    teacherName: "Mrs. Anitha Kumar",
+    teacherName: "Mrs. Jesni",
     estimatedReadTimeMinutes: 15,
     sections: [
       {
@@ -301,7 +301,8 @@ export const seedChapters = [
           "സ്ലേറ്റ്: ഷെയ്ൽ പാറ മാറിയുണ്ടാകുന്നു. സ്കൂളിലെ എഴുത്തുപലകകൾക്കും മേൽക്കൂര ടൈലുകൾക്കും ഉപയോഗിക്കുന്നു.",
           "മാർബിൾ (വെണ്ണക്കല്ല്): ചുണ്ണാമ്പുകല്ല് മാറിയുണ്ടാകുന്നു. ആഗ്രയിലെ അത്ഭുതമായ താജ്മഹൽ (Taj Mahal) വെളുത്ത മാർബിളിലാണ് പണിതിരിക്കുന്നത്!",
           "ക്വാർട്സൈറ്റ്: മണൽക്കല്ല് മാറിയുണ്ടാകുന്നു. ഗ്ലാസ്, സിറാമിക്സ് എന്നിവയ്ക്ക് ഉപയോഗിക്കുന്നു.",
-          "നൈസ് (Gneiss): ഗ്രാനൈറ്റ് മാറിയുണ്ടാകുന്നു. വരകളുള്ള മനോഹരമായ പ്രതിമകൾക്ക് ഉപയോഗിക്കുന്നു."
+          "നൈസ് (Gneiss): ഗ്രാനൈറ്റ് മാറിയുണ്ടാകുന്നു. വരമ്പുകൾ പോലുള്ള പാറ്റേൺ.",
+          "ശിൽപ്പങ്ങൾ, കെട്ടിടങ്ങൾ"
         ],
         interactiveType: "none",
         items: [
@@ -373,31 +374,31 @@ export const seedChapters = [
   },
   {
     chapterNumber: 2,
-    title: "Living World & Ecosystems in Kerala",
-    titleMl: "ജീവികളുടെ ലോകവും കേരളത്തിലെ പരിസ്ഥിതിയും",
+    title: "Living World & Ecosystems",
+    titleMl: "ജീവികളുടെ ലോകവും ആവാസവ്യവസ്ഥയും",
     subject: "Science",
-    grade: "Class 5",
-    state: "Kerala State Board",
-    summary: "Explore the Western Ghats biodiversity, food chains, adaptation of plants and animals in Kerala's monsoon climate.",
-    summaryMl: "പശ്ചിമഘട്ടത്തിലെ ജൈവവൈവിധ്യം, ഭക്ഷ്യശൃംഖല, കേരളത്തിലെ മഴക്കാലത്തെ സസ്യങ്ങളുടെയും ജീവികളുടെയും അതിജീവനം.",
+    grade: "Class 5 (5A & 5B)",
+    state: "Kerala Syllabus · YAMANIYYA ENGLISH MEDIUM SCHOOL",
+    summary: "Discover the Western Ghats ecosystem, food chains, adaptation of plants and animals in Kerala's climate.",
+    summaryMl: "പശ്ചിമഘട്ടത്തിലെ ജൈവവൈവിധ്യം, ഭക്ഷ്യശൃംഖല, സസ്യങ്ങളുടെയും ജീവികളുടെയും അതിജീവനം എന്നിവയെക്കുറിച്ച് പഠിക്കാം.",
     teacherPhone: "7736419753",
-    teacherName: "Mrs. Anitha Kumar",
+    teacherName: "Mrs. Jesni",
     estimatedReadTimeMinutes: 12,
     sections: [
       {
-        title: "Biodiversity of God's Own Country",
-        titleMl: "ദൈവത്തിന്റെ സ്വന്തം നാട്ടിലെ ജൈവവൈവിധ്യം",
-        content: "Kerala is blessed with the Western Ghats (Sahyadri), mangrove wetlands, and backwaters harboring unique species like the Nilgiri Tahr and Hornbill.",
-        contentMl: "വരയാട്, വേഴാമ്പൽ തുടങ്ങിയ അപൂർവ്വ ജീവികളാൽ സമൃദ്ധമാണ് പശ്ചിമഘട്ടവും കേരളത്തിന്റെ കായലുകളും.",
+        title: "Producers, Consumers and Food Chains",
+        titleMl: "ഉൽപ്പാദകരും ഉപഭോക്താക്കളും ഭക്ഷ്യശൃംഖലയും",
+        content: "Green plants are producers that prepare their own food using sunlight, water, and carbon dioxide through photosynthesis. Animals are consumers that depend directly or indirectly on plants for energy.",
+        contentMl: "സൂര്യപ്രകാശം ഉപയോഗിച്ച് സ്വന്തമായി ആഹാരം നിർമ്മിക്കുന്ന സസ്യങ്ങളാണ് ഉൽപ്പാദകർ. ഊർജ്ജത്തിനായി സസ്യങ്ങളെ ആശ്രയിക്കുന്ന ജീവികളാണ് ഉപഭോക്താക്കൾ.",
         bulletPoints: [
-          "Producers (Plants make food via Photosynthesis)",
-          "Consumers (Herbivores, Carnivores, Omnivores)",
-          "Decomposers (Fungi and soil bacteria recycle nutrients)"
+          "Herbivores (Plant-eaters like deer, cows)",
+          "Carnivores (Flesh-eaters like tigers, eagles)",
+          "Omnivores (Eat both plants and meat, like humans, crows)"
         ],
         bulletPointsMl: [
-          "ഉൽപ്പാദകർ (സസ്യങ്ങൾ ഭക്ഷണം നിർമ്മിക്കുന്നു)",
-          "ഉപഭോക്താക്കൾ (സസ്യഭുക്കുകൾ, മാംസഭുക്കുകൾ)",
-          "വിഘാടകർ (മണ്ണിലെ ബാക്ടീരിയകളും കുമിളകളും)"
+          "സസ്യഭുക്കുകൾ (മാൻ, പശു)",
+          "മാംസഭുക്കുകൾ (കടുവ, പരുന്ത്)",
+          "മിശ്രഭുക്കുകൾ (മനുഷ്യൻ, കാക്ക)"
         ],
         interactiveType: "none",
         items: []
@@ -406,31 +407,31 @@ export const seedChapters = [
   },
   {
     chapterNumber: 3,
-    title: "Fun with Fractions & Geometry",
-    titleMl: "ഭിന്നസംഖ്യകളും ജ്യാമിതിയും",
-    subject: "Maths",
-    grade: "Class 5",
-    state: "Kerala State Board",
-    summary: "Visualizing halves, thirds, and quarters using delicious Kerala bananas and appam! Discover angles and perimeter.",
-    summaryMl: "അപ്പവും പഴവും തുല്യമായി പങ്കുവെച്ച് ഭിന്നസംഖ്യകൾ പഠിക്കാം. കോണുകളും ചുറ്റളവും കണ്ടെത്താം.",
+    title: "States of Matter & Properties of Air",
+    titleMl: "പദാർത്ഥങ്ങളുടെ അവസ്ഥകളും വായുവിന്റെ ഗുണങ്ങളും",
+    subject: "Science",
+    grade: "Class 5 (5A & 5B)",
+    state: "Kerala Syllabus · YAMANIYYA ENGLISH MEDIUM SCHOOL",
+    summary: "Solid, Liquid, and Gas! Explore molecular arrangement, air pressure, expansion on heating, and water cycle.",
+    summaryMl: "ഖരം, ദ്രാവകം, വാതകം! തന്മാത്രകളുടെ വിന്യാസം, വായുമർദ്ദം, ജലചക്രം എന്നിവ പരീക്ഷണങ്ങളിലൂടെ അറിയാം.",
     teacherPhone: "7736419753",
-    teacherName: "Mrs. Anitha Kumar",
-    estimatedReadTimeMinutes: 10,
+    teacherName: "Mrs. Jesni",
+    estimatedReadTimeMinutes: 12,
     sections: [
       {
-        title: "Fractions in Real Life",
-        titleMl: "ദൈനംദിന ജീവിതത്തിലെ ഭിന്നസംഖ്യകൾ",
-        content: "A fraction represents equal parts of a whole. When 1 whole pathiri is split equally among 4 friends, each receives 1/4th part.",
-        contentMl: "ഒരു പൂർണ്ണവസ്തുവിനെ തുല്യഭാഗങ്ങളാക്കുമ്പോൾ ലഭിക്കുന്നതാണ് ഭിന്നസംഖ്യ.",
+        title: "Solids, Liquids and Gases",
+        titleMl: "ഖര, ദ്രാവക, വാതക അവസ്ഥകൾ",
+        content: "Matter exists in three states. In solids, molecules are tightly packed. In liquids, molecules have room to slide. In gases, molecules move freely and spread everywhere.",
+        contentMl: "ഖരവസ്തുക്കളിൽ തന്മാത്രകൾ അടുക്കിപ്പെറുക്കി വെച്ചിരിക്കുന്നു. ദ്രാവകങ്ങളിൽ തന്മാത്രകൾക്ക് ചലിക്കാൻ സ്ഥലമുണ്ട്. വാതകങ്ങളിൽ തന്മാത്രകൾ സ്വതന്ത്രമായി പറന്നുനടക്കുന്നു.",
         bulletPoints: [
-          "Numerator (top number: parts considered)",
-          "Denominator (bottom number: total equal parts)",
-          "Equivalent fractions: 1/2 = 2/4 = 4/8"
+          "Solids have definite shape and definite volume",
+          "Liquids take the shape of the container",
+          "Gases have no fixed shape and fill any container"
         ],
         bulletPointsMl: [
-          "അംശം (Numerator): എടുത്ത ഭാഗങ്ങൾ",
-          "ഛേദം (Denominator): ആകെ തുല്യഭാഗങ്ങൾ",
-          "തുല്യഭിന്നങ്ങൾ: 1/2 = 2/4 = 4/8"
+          "ഖരവസ്തുക്കൾക്ക് കൃത്യമായ ആകൃതിയും വ്യാപ്തവുമുണ്ട്",
+          "ദ്രാവകങ്ങൾക്ക് പാത്രത്തിന്റെ ആകൃതി ലഭിക്കുന്നു",
+          "വാതകങ്ങൾക്ക് കൃത്യമായ ആകൃതിയില്ല"
         ],
         interactiveType: "none",
         items: []
@@ -439,64 +440,31 @@ export const seedChapters = [
   },
   {
     chapterNumber: 4,
-    title: "The Friendship Bridge (Story & Grammar)",
-    titleMl: "സൗഹൃദത്തിന്റെ പാലം (ഇംഗ്ലീഷ് കഥ)",
-    subject: "English",
-    grade: "Class 5",
-    state: "Kerala State Board",
-    summary: "Read a heartwarming story about two siblings building a bamboo bridge across a stream in Wayanad. Learn Nouns and Adjectives.",
-    summaryMl: "വയനാട്ടിലെ തോടിന് കുറുകെ മുളപ്പാലം പണിത കുട്ടികളുടെ കഥ. വ്യാകരണ പാഠങ്ങൾ.",
+    title: "Simple Machines & Energy",
+    titleMl: "ലളിത യന്ത്രങ്ങളും ഊർജ്ജവും",
+    subject: "Science",
+    grade: "Class 5 (5A & 5B)",
+    state: "Kerala Syllabus · YAMANIYYA ENGLISH MEDIUM SCHOOL",
+    summary: "How levers, pulleys, inclined planes, and wheel-axles make our daily work easier. Mechanical advantage for Class 5.",
+    summaryMl: "ഉത്തോലകങ്ങൾ, കപ്പികൾ, ചരിവുതലങ്ങൾ എന്നിവ നമ്മുടെ അധ്വാനം എളുപ്പമാക്കുന്നതെങ്ങനെ എന്ന് പഠിക്കാം.",
     teacherPhone: "7736419753",
-    teacherName: "Mrs. Anitha Kumar",
-    estimatedReadTimeMinutes: 10,
+    teacherName: "Mrs. Jesni",
+    estimatedReadTimeMinutes: 14,
     sections: [
       {
-        title: "Reading Comprehension & Adjectives",
-        titleMl: "വായനയും വിശേഷണ പദങ്ങളും",
-        content: "Adjectives are describing words that tell us more about a noun, like 'sparkling river', 'brave child', and 'golden sun'.",
-        contentMl: "നാമപദങ്ങളെ വർണ്ണിക്കുന്ന വാക്കുകളാണ് വിശേഷണങ്ങൾ (Adjectives).",
+        title: "The Six Simple Machines",
+        titleMl: "ആറ് ലളിത യന്ത്രങ്ങൾ",
+        content: "A simple machine is a tool that allows us to do work using less effort or changing the direction of force.",
+        contentMl: "കുറഞ്ഞ അധ്വാനം കൊണ്ട് ജോലി എളുപ്പമാക്കാൻ സഹായിക്കുന്ന ഉപകരണങ്ങളാണ് ലളിത യന്ത്രങ്ങൾ.",
         bulletPoints: [
-          "Identifying Describing Words",
-          "Sentence Construction",
-          "Pronunciation practice with teacher audio"
+          "Lever (Scissors, see-saw, crowbar)",
+          "Pulley (Drawing water from well, flagpole)",
+          "Inclined Plane (Hospital ramp, slide)"
         ],
         bulletPointsMl: [
-          "വിശേഷണ പദങ്ങൾ കണ്ടെത്തുക",
-          "വാക്യങ്ങൾ നിർമ്മിക്കുക",
-          "ശരിയായ ഉച്ചാരണം"
-        ],
-        interactiveType: "none",
-        items: []
-      }
-    ]
-  },
-  {
-    chapterNumber: 5,
-    title: "കേരളത്തിന്റെ പ്രകൃതിസൗന്ദര്യം (കവിത)",
-    titleMl: "കേരളത്തിന്റെ പ്രകൃതിസൗന്ദര്യം",
-    subject: "Malayalam",
-    grade: "Class 5",
-    state: "Kerala State Board",
-    summary: "നമ്മുടെ നാടിന്റെ പച്ചപ്പും കായലുകളും മഴയും വർണ്ണിക്കുന്ന മനോഹരമായ കവിതാ വായനയും വ്യാകരണ പാഠങ്ങളും.",
-    summaryMl: "കേരളത്തിന്റെ പ്രകൃതിയെക്കുറിച്ചുള്ള കവിതയും ചോദ്യോത്തരങ്ങളും.",
-    teacherPhone: "7736419753",
-    teacherName: "Mrs. Anitha Kumar",
-    estimatedReadTimeMinutes: 10,
-    sections: [
-      {
-        title: "കവിതയും ആശയവും",
-        titleMl: "കവിതയും ആശയവും",
-        content: "പച്ചപ്പട്ടുടുത്ത സഹ്യപർവ്വതവും കതിരണിഞ്ഞ പാടങ്ങളും കേരളത്തിന്റെ പ്രത്യേകതയാണ്. കവിത ചൊല്ലി പഠിക്കാം.",
-        contentMl: "പച്ചപ്പട്ടുടുത്ത സഹ്യപർവ്വതവും കതിരണിഞ്ഞ പാടങ്ങളും കേരളത്തിന്റെ പ്രത്യേകതയാണ്.",
-        bulletPoints: [
-          "കവിതയിലെ താളവും പ്രാസവും",
-          "പദപരിചയം: ഹരിതം, കതിർ, കുളിർതെന്നൽ",
-          "സമാനപദങ്ങൾ കണ്ടെത്തുക"
-        ],
-        bulletPointsMl: [
-          "കവിതയിലെ താളവും പ്രാസവും",
-          "പദപരിചയം",
-          "സമാനപദങ്ങൾ കണ്ടെത്തുക"
+          "ഉത്തോലകം (കത്രിക, സീസോ)",
+          "കപ്പി (കിണറ്റിൽ നിന്ന് വെള്ളം കോരാൻ)",
+          "ചരിവുതലം (റാമ്പ്, സ്ലൈഡ്)"
         ],
         interactiveType: "none",
         items: []
@@ -512,14 +480,14 @@ export const seedQuizzes = [
     chapterId: "rocks-minerals-ch1",
     chapterNumber: 1,
     subject: "Science",
-    grade: "Class 5",
+    grade: "Class 5 (5A & 5B)",
     passingScore: 60,
     totalMarks: 100,
     timeLimitMinutes: 15,
     badgeReward: {
       title: "Junior Geologist Champion",
       icon: "💎",
-      description: "Mastered all questions about Rocks, Minerals, and Fossil Fuels!"
+      description: "Mastered all questions about Rocks, Minerals, and Fossil Fuels in Class 5 Science!"
     },
     questions: [
       {
@@ -626,104 +594,8 @@ export const seedQuizzes = [
   }
 ];
 
-export const seedStudents = [
-  {
-    name: "Aadhya Menon",
-    rollNumber: 1,
-    division: "5A",
-    school: "Govt Model LP School, Thiruvananthapuram",
-    avatarEmoji: "🌸",
-    stars: 35,
-    badges: [
-      { badgeId: "geo-explorer", title: "Rock Detective", icon: "🔍", earnedAt: new Date() },
-      { badgeId: "fossil-star", title: "Fossil Friend", icon: "🦖", earnedAt: new Date() }
-    ]
-  },
-  {
-    name: "Rahul Nair",
-    rollNumber: 2,
-    division: "5A",
-    school: "Govt Model LP School, Thiruvananthapuram",
-    avatarEmoji: "🚀",
-    stars: 42,
-    badges: [
-      { badgeId: "quiz-whiz", title: "Quiz Whiz", icon: "⭐", earnedAt: new Date() }
-    ]
-  },
-  {
-    name: "Fathima Beevi",
-    rollNumber: 3,
-    division: "5A",
-    school: "Govt Model LP School, Thiruvananthapuram",
-    avatarEmoji: "🦋",
-    stars: 50,
-    badges: [
-      { badgeId: "geo-master", title: "Junior Geologist", icon: "💎", earnedAt: new Date() }
-    ]
-  },
-  {
-    name: "Devanand K",
-    rollNumber: 4,
-    division: "5A",
-    school: "Govt Model LP School, Thiruvananthapuram",
-    avatarEmoji: "🐯",
-    stars: 28,
-    badges: []
-  },
-  {
-    name: "Ananya S",
-    rollNumber: 5,
-    division: "5A",
-    school: "Govt Model LP School, Thiruvananthapuram",
-    avatarEmoji: "🐬",
-    stars: 30,
-    badges: []
-  }
-];
+// No mock students - real students of 5A and 5B will register/sign up!
+export const seedStudents = [];
 
-export const seedSubmissions = [
-  {
-    quizId: "rocks-minerals-ch1",
-    quizTitle: "Class 5 Science: Rocks and Minerals Grand Quiz",
-    studentName: "Aadhya Menon",
-    rollNumber: 1,
-    score: 90,
-    totalQuestions: 10,
-    percentage: 90,
-    passed: true,
-    submittedAt: new Date(Date.now() - 3600000 * 24 * 2)
-  },
-  {
-    quizId: "rocks-minerals-ch1",
-    quizTitle: "Class 5 Science: Rocks and Minerals Grand Quiz",
-    studentName: "Rahul Nair",
-    rollNumber: 2,
-    score: 100,
-    totalQuestions: 10,
-    percentage: 100,
-    passed: true,
-    submittedAt: new Date(Date.now() - 3600000 * 18)
-  },
-  {
-    quizId: "rocks-minerals-ch1",
-    quizTitle: "Class 5 Science: Rocks and Minerals Grand Quiz",
-    studentName: "Fathima Beevi",
-    rollNumber: 3,
-    score: 100,
-    totalQuestions: 10,
-    percentage: 100,
-    passed: true,
-    submittedAt: new Date(Date.now() - 3600000 * 8)
-  },
-  {
-    quizId: "rocks-minerals-ch1",
-    quizTitle: "Class 5 Science: Rocks and Minerals Grand Quiz",
-    studentName: "Devanand K",
-    rollNumber: 4,
-    score: 70,
-    totalQuestions: 10,
-    percentage: 70,
-    passed: true,
-    submittedAt: new Date(Date.now() - 3600000 * 4)
-  }
-];
+// No mock submissions - will record real quiz attempts by 5A and 5B students!
+export const seedSubmissions = [];

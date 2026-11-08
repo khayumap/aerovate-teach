@@ -12,7 +12,9 @@ import {
   CheckCircle2,
   Search,
   School,
-  ExternalLink
+  ExternalLink,
+  Filter,
+  UserCheck
 } from 'lucide-react';
 import { Chapter, DashboardStats, Language, Student, Submission, TeacherProfile } from '../types';
 
@@ -37,13 +39,13 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
   const [loading, setLoading] = useState(true);
   const [showAddChapterModal, setShowAddChapterModal] = useState(false);
   const [actionMessage, setActionMessage] = useState<string | null>(null);
+  const [selectedDivisionFilter, setSelectedDivisionFilter] = useState<'All' | '5A' | '5B'>('All');
 
   // Form State for Adding Chapter
   const [formData, setFormData] = useState({
     title: '',
     titleMl: '',
-    subject: 'Science',
-    chapterNumber: 2,
+    chapterNumber: 5,
     summary: '',
     summaryMl: '',
     sectionTitle: 'Lesson Overview',
@@ -85,17 +87,16 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
       const payload = {
         title: formData.title,
         titleMl: formData.titleMl || formData.title,
-        subject: formData.subject,
         chapterNumber: Number(formData.chapterNumber),
-        summary: formData.summary || 'Class 5 chapter lesson.',
-        summaryMl: formData.summaryMl || formData.summary || 'പാഠഭാഗം',
+        summary: formData.summary || 'Class 5 Science module.',
+        summaryMl: formData.summaryMl || formData.summary || 'സയൻസ് പാഠഭാഗം',
         sections: [
           {
             title: formData.sectionTitle || 'Section 1',
             titleMl: formData.sectionTitle || 'ഭാഗം 1',
             content: formData.sectionContent || formData.summary,
             contentMl: formData.summaryMl || formData.summary,
-            bulletPoints: ['Introduction to core concepts', 'Classroom discussion'],
+            bulletPoints: ['Introduction to core science concepts', 'Classroom discussion for 5A & 5B'],
             interactiveType: 'none',
             items: []
           }
@@ -110,7 +111,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
 
       if (res.ok) {
         setShowAddChapterModal(false);
-        setActionMessage('Chapter created successfully!');
+        setActionMessage('Science chapter created successfully!');
         fetchDashboardData();
         setTimeout(() => setActionMessage(null), 3000);
       }
@@ -132,16 +133,31 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
   };
 
   const handleResetData = async () => {
-    if (!confirm('Reset curriculum to default Class 5 Rocks & Minerals syllabus?')) return;
+    if (!confirm('Reset Science syllabus to default Class 5 curriculum?')) return;
     try {
       await fetch('/api/seed/reset', { method: 'POST' });
-      setActionMessage('Curriculum reset to defaults.');
+      setActionMessage('Science curriculum reset to defaults.');
       fetchDashboardData();
       setTimeout(() => setActionMessage(null), 3000);
     } catch (err) {
       console.error('Reset error:', err);
     }
   };
+
+  // Filter students by selected division
+  const filteredStudents = students.filter(s => {
+    if (selectedDivisionFilter === 'All') return true;
+    return s.division === selectedDivisionFilter;
+  });
+
+  // Filter submissions by selected division
+  const filteredSubmissions = submissions.filter(sub => {
+    if (selectedDivisionFilter === 'All') return true;
+    return sub.division === selectedDivisionFilter;
+  });
+
+  const count5A = students.filter(s => s.division === '5A').length;
+  const count5B = students.filter(s => s.division === '5B').length;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -154,14 +170,14 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-2xl font-bold text-slate-900">
-                {teacher?.name || 'Mrs. Anitha Kumar'}
+                {teacher?.name || 'Mrs. Jesni'}
               </h1>
-              <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold">
-                Teacher Lead
+              <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold">
+                Science Lead (Class 5A & 5B)
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-1">
-              Class 5 (Science & EVS) · Govt Model LP School, Kerala · Aerovate Teaching Platform
+            <p className="text-xs text-slate-600 mt-1 font-medium">
+              YAMANIYYA ENGLISH MEDIUM SCHOOL · Aerovate Teaching Platform
             </p>
             <div className="flex items-center gap-3 mt-2 text-xs font-semibold">
               <span className="text-emerald-700 flex items-center gap-1">
@@ -180,7 +196,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
             className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-sm transition-colors flex items-center gap-1.5"
           >
             <PlusCircle className="w-4 h-4" />
-            <span>Add New Chapter</span>
+            <span>Add Science Chapter</span>
           </button>
 
           <button
@@ -188,13 +204,13 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
             className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-sm transition-colors flex items-center gap-1.5"
           >
             <Phone className="w-4 h-4" />
-            <span>Open WhatsApp Helpline</span>
+            <span>Open WhatsApp (+91 7736419753)</span>
           </button>
 
           <button
             onClick={handleResetData}
             className="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors flex items-center gap-1"
-            title="Reset curriculum to default state"
+            title="Reset syllabus to default"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Reset Syllabus</span>
@@ -209,7 +225,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
         </div>
       )}
 
-      {/* Database & Hosting Status Bar (Replit & MongoDB Atlas) */}
+      {/* Database & Render Hosting Notice */}
       <div className="bg-slate-900 text-slate-200 rounded-2xl p-4 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2.5">
           <Database className="w-4 h-4 text-emerald-400" />
@@ -218,15 +234,15 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
             <span className={dbInfo?.connected ? 'text-emerald-400 font-semibold' : 'text-amber-400 font-semibold'}>
               {dbInfo?.connected
                 ? `Connected to MongoDB Atlas (${dbInfo?.mongoHost})`
-                : 'In-Memory Store Active (Replit Ready with MONGO_URI in Secrets)'}
+                : 'In-Memory Store Active (MongoDB Atlas MONGO_URI ready for Render)'}
             </span>
           </div>
         </div>
 
         <div className="flex items-center gap-2 text-[11px] text-slate-400">
-          <span>Stack: MERN (React 19, Express, Mongoose)</span>
+          <span>Host: Render Cloud Service</span>
           <span>·</span>
-          <span>Port: 5000 / 3000</span>
+          <span>School: Yamaniyya English Medium School</span>
         </div>
       </div>
 
@@ -234,7 +250,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total Chapters</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Science Chapters</span>
             <span className="p-1.5 rounded-lg bg-blue-50 text-blue-600">
               <BookOpen className="w-4 h-4" />
             </span>
@@ -242,46 +258,186 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
           <div className="text-2xl font-black text-slate-900 tabular-nums">
             {stats?.totalChapters ?? chapters.length}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">Class 5 curriculum modules</div>
+          <div className="text-[11px] text-slate-500 mt-1">Class 5A & 5B Science modules</div>
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total Quizzes</span>
-            <span className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
-              <Award className="w-4 h-4" />
-            </span>
-          </div>
-          <div className="text-2xl font-black text-slate-900 tabular-nums">
-            {stats?.totalQuizzes ?? 1}
-          </div>
-          <div className="text-[11px] text-slate-500 mt-1">Interactive quizzes with badges</div>
-        </div>
-
-        <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Enrolled Students</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Class 5A Students</span>
             <span className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600">
               <Users className="w-4 h-4" />
             </span>
           </div>
           <div className="text-2xl font-black text-slate-900 tabular-nums">
-            {stats?.totalStudents ?? students.length}
+            {count5A}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">Class 5A students active</div>
+          <div className="text-[11px] text-slate-500 mt-1">Real registered learners in 5A</div>
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Avg Class Score</span>
-            <span className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Class 5B Students</span>
+            <span className="p-1.5 rounded-lg bg-purple-50 text-purple-600">
+              <Users className="w-4 h-4" />
+            </span>
+          </div>
+          <div className="text-2xl font-black text-slate-900 tabular-nums">
+            {count5B}
+          </div>
+          <div className="text-[11px] text-slate-500 mt-1">Real registered learners in 5B</div>
+        </div>
+
+        <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Avg Quiz Score</span>
+            <span className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
               <TrendingUp className="w-4 h-4" />
             </span>
           </div>
           <div className="text-2xl font-black text-slate-900 tabular-nums">
-            {stats?.averageScore ?? 88}%
+            {stats?.averageScore ?? 0}%
           </div>
-          <div className="text-[11px] text-emerald-600 font-semibold mt-1">Pass rate: 94%</div>
+          <div className="text-[11px] text-slate-500 mt-1">Based on {submissions.length} submissions</div>
+        </div>
+      </div>
+
+      {/* Division Selector Tab Bar for Roster & Submissions */}
+      <div className="flex items-center justify-between bg-white rounded-2xl border border-slate-200 p-3 shadow-sm">
+        <div className="flex items-center gap-2">
+          <Filter className="w-4 h-4 text-blue-600" />
+          <span className="text-xs font-bold text-slate-700">Filter By Class:</span>
+        </div>
+        <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
+          {(['All', '5A', '5B'] as const).map(div => (
+            <button
+              key={div}
+              onClick={() => setSelectedDivisionFilter(div)}
+              className={`px-3.5 py-1 text-xs font-bold rounded-lg transition-all ${
+                selectedDivisionFilter === div
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              {div === 'All' ? 'All Classes (5A & 5B)' : `Class ${div}`}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Two Column Layout: Real Student Roster & Recent Quiz Submissions */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        {/* Real Student Roster (Class 5A & 5B) */}
+        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-base font-bold text-slate-900">
+                Registered Students ({selectedDivisionFilter === 'All' ? '5A & 5B' : `Class ${selectedDivisionFilter}`})
+              </h2>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Real student names from YAMANIYYA ENGLISH MEDIUM SCHOOL
+              </p>
+            </div>
+            <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg">
+              {filteredStudents.length} Students
+            </span>
+          </div>
+
+          {filteredStudents.length === 0 ? (
+            <div className="py-12 text-center border border-dashed border-slate-200 rounded-2xl bg-slate-50/50 p-6">
+              <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl mx-auto mb-2">
+                <Users className="w-6 h-6" />
+              </div>
+              <h4 className="text-xs font-bold text-slate-800 mb-1">
+                No students registered yet in {selectedDivisionFilter === 'All' ? 'Class 5A or 5B' : `Class ${selectedDivisionFilter}`}
+              </h4>
+              <p className="text-[11px] text-slate-500 max-w-sm mx-auto mb-3">
+                When students from Class 5A and 5B click "Sign Up" on the student login modal, their real names and roll numbers will appear here!
+              </p>
+            </div>
+          ) : (
+            <div className="divide-y divide-slate-100 max-h-96 overflow-y-auto">
+              {filteredStudents.map(s => (
+                <div key={s._id || `${s.division}_${s.rollNumber}`} className="py-2.5 flex items-center justify-between text-xs hover:bg-slate-50/50 px-2 rounded-lg transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-lg">{s.avatarEmoji || '🎒'}</span>
+                    <div>
+                      <div className="font-bold text-slate-900">{s.name}</div>
+                      <div className="text-[11px] text-slate-500">
+                        Roll No: <strong className="text-slate-800">{s.rollNumber}</strong> · Class: <span className="font-semibold text-blue-700">{s.division}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <span className="font-bold text-amber-500">★ {s.stars || 0}</span>
+                    <div className="flex items-center gap-1">
+                      {s.badges?.map((b, i) => (
+                        <span key={i} title={b.title} className="text-base cursor-help">
+                          {b.icon}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Real Quiz Submissions Gradebook */}
+        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-base font-bold text-slate-900">
+                Quiz Gradebook ({selectedDivisionFilter === 'All' ? '5A & 5B' : `Class ${selectedDivisionFilter}`})
+              </h2>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Real-time scores recorded for Class 5 Science quizzes
+              </p>
+            </div>
+            <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">
+              {filteredSubmissions.length} Submissions
+            </span>
+          </div>
+
+          {filteredSubmissions.length === 0 ? (
+            <div className="py-12 text-center border border-dashed border-slate-200 rounded-2xl bg-slate-50/50 p-6">
+              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mx-auto mb-2">
+                <Award className="w-6 h-6" />
+              </div>
+              <h4 className="text-xs font-bold text-slate-800 mb-1">
+                No quiz submissions yet
+              </h4>
+              <p className="text-[11px] text-slate-500 max-w-sm mx-auto">
+                Once students complete Chapter 1 "Rocks and Minerals" quiz, their graded scores and answers will appear here in real time.
+              </p>
+            </div>
+          ) : (
+            <div className="divide-y divide-slate-100 max-h-96 overflow-y-auto">
+              {filteredSubmissions.map((sub, i) => (
+                <div key={sub._id || i} className="py-2.5 flex items-center justify-between text-xs hover:bg-slate-50/50 px-2 rounded-lg transition-colors">
+                  <div>
+                    <div className="font-bold text-slate-900">{sub.studentName}</div>
+                    <div className="text-[11px] text-slate-500">
+                      Roll #{sub.rollNumber} · Class {sub.division || '5A'} · {new Date(sub.submittedAt).toLocaleDateString()}
+                    </div>
+                  </div>
+
+                  <div className="text-right">
+                    <span className={`font-black text-sm tabular-nums ${
+                      sub.percentage >= 60 ? 'text-emerald-600' : 'text-amber-600'
+                    }`}>
+                      {sub.percentage}%
+                    </span>
+                    <div className="text-[10px] text-slate-400">
+                      {sub.score} / 100 marks
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -289,8 +445,8 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-base font-bold text-slate-900">Manage Syllabus Chapters</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Click to view lesson or manage courseware</p>
+            <h2 className="text-base font-bold text-slate-900">Class 5 Science Chapters</h2>
+            <p className="text-xs text-slate-500 mt-0.5">Syllabus modules for Yamaniyya English Medium School</p>
           </div>
           <button
             onClick={() => setShowAddChapterModal(true)}
@@ -308,7 +464,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
                 <th className="py-2.5 px-3">Ch #</th>
                 <th className="py-2.5 px-3">Title & Subject</th>
                 <th className="py-2.5 px-3">Sections</th>
-                <th className="py-2.5 px-3">Teacher Contact</th>
+                <th className="py-2.5 px-3">Teacher</th>
                 <th className="py-2.5 px-3 text-right">Actions</th>
               </tr>
             </thead>
@@ -320,7 +476,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
                   </td>
                   <td className="py-3 px-3">
                     <div className="font-bold text-slate-900">{ch.title}</div>
-                    <div className="text-[11px] text-blue-600 font-medium">{ch.titleMl} · {ch.subject}</div>
+                    <div className="text-[11px] text-blue-600 font-medium">{ch.titleMl} · Science</div>
                   </td>
                   <td className="py-3 px-3 text-slate-600">
                     {ch.sections?.length || 0} sections
@@ -333,7 +489,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
                       onClick={() => onSelectChapter(ch.chapterNumber)}
                       className="px-2.5 py-1 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-md transition-colors"
                     >
-                      View
+                      View Lesson
                     </button>
                     {ch.chapterNumber !== 1 && (
                       <button
@@ -352,125 +508,32 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
         </div>
       </div>
 
-      {/* Two Column Layout: Student Roster & Recent Quiz Submissions */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Student Roster */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-base font-bold text-slate-900">Class 5A Student Roster</h2>
-              <p className="text-xs text-slate-500 mt-0.5">Students enrolled in Govt Model LP School</p>
-            </div>
-            <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg">
-              {students.length} Learners
-            </span>
-          </div>
-
-          <div className="divide-y divide-slate-100 max-h-80 overflow-y-auto">
-            {students.map(s => (
-              <div key={s._id || s.rollNumber} className="py-2.5 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-lg">{s.avatarEmoji || '🎒'}</span>
-                  <div>
-                    <div className="font-bold text-slate-900">{s.name}</div>
-                    <div className="text-[11px] text-slate-500">Roll No: {s.rollNumber} · Class 5A</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <span className="font-bold text-amber-500">★ {s.stars || 0}</span>
-                  <div className="flex items-center gap-1">
-                    {s.badges?.map((b, i) => (
-                      <span key={i} title={b.title} className="text-base cursor-help">
-                        {b.icon}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Recent Quiz Gradebook */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-base font-bold text-slate-900">Recent Quiz Performance</h2>
-              <p className="text-xs text-slate-500 mt-0.5">Live submissions from Rocks & Minerals quiz</p>
-            </div>
-            <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">
-              {submissions.length} Submissions
-            </span>
-          </div>
-
-          <div className="divide-y divide-slate-100 max-h-80 overflow-y-auto">
-            {submissions.map((sub, i) => (
-              <div key={sub._id || i} className="py-2.5 flex items-center justify-between text-xs">
-                <div>
-                  <div className="font-bold text-slate-900">{sub.studentName}</div>
-                  <div className="text-[11px] text-slate-500">
-                    Roll #{sub.rollNumber} · {new Date(sub.submittedAt).toLocaleDateString()}
-                  </div>
-                </div>
-
-                <div className="text-right">
-                  <span className={`font-black text-sm tabular-nums ${
-                    sub.percentage >= 70 ? 'text-emerald-600' : 'text-amber-600'
-                  }`}>
-                    {sub.percentage}%
-                  </span>
-                  <div className="text-[10px] text-slate-400">
-                    {sub.score} / 100 marks
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Add Chapter Modal */}
       {showAddChapterModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-lg font-bold text-slate-900 mb-1">Add New Chapter (Class 5)</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-1">Add Science Chapter (Class 5A & 5B)</h3>
             <p className="text-xs text-slate-500 mb-4">
-              Expand the teaching curriculum with a new subject module.
+              Add a new Science chapter module for Yamaniyya English Medium School.
             </p>
 
             <form onSubmit={handleCreateChapter} className="space-y-3.5 text-xs">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Chapter Number</label>
-                  <input
-                    type="number"
-                    value={formData.chapterNumber}
-                    onChange={e => setFormData({ ...formData, chapterNumber: parseInt(e.target.value, 10) || 1 })}
-                    className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Subject</label>
-                  <select
-                    value={formData.subject}
-                    onChange={e => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white"
-                  >
-                    <option value="Science">Science (EVS)</option>
-                    <option value="Maths">Mathematics</option>
-                    <option value="English">English</option>
-                    <option value="Malayalam">Malayalam</option>
-                  </select>
-                </div>
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">Chapter Number</label>
+                <input
+                  type="number"
+                  value={formData.chapterNumber}
+                  onChange={e => setFormData({ ...formData, chapterNumber: parseInt(e.target.value, 10) || 1 })}
+                  className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  required
+                />
               </div>
 
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">Title (English)</label>
                 <input
                   type="text"
-                  placeholder="e.g. Living World & Plants"
+                  placeholder="e.g. Light, Shadows and Reflection"
                   value={formData.title}
                   onChange={e => setFormData({ ...formData, title: e.target.value })}
                   className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -482,7 +545,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
                 <label className="block font-semibold text-slate-700 mb-1">Title (Malayalam)</label>
                 <input
                   type="text"
-                  placeholder="e.g. ജീവികളുടെ ലോകം"
+                  placeholder="e.g. പ്രകാശവും നിഴലും"
                   value={formData.titleMl}
                   onChange={e => setFormData({ ...formData, titleMl: e.target.value })}
                   className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 font-['Noto_Sans_Malayalam',sans-serif]"
@@ -490,10 +553,10 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Summary / Objective</label>
+                <label className="block font-semibold text-slate-700 mb-1">Summary / Learning Outcome</label>
                 <textarea
                   rows={2}
-                  placeholder="Brief summary of what Class 5 kids will discover..."
+                  placeholder="What Class 5 students in 5A & 5B will discover..."
                   value={formData.summary}
                   onChange={e => setFormData({ ...formData, summary: e.target.value })}
                   className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -501,10 +564,10 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Initial Section Content</label>
+                <label className="block font-semibold text-slate-700 mb-1">First Section Lesson Content</label>
                 <textarea
                   rows={3}
-                  placeholder="Core lesson text for kids to read..."
+                  placeholder="Core science lesson text..."
                   value={formData.sectionContent}
                   onChange={e => setFormData({ ...formData, sectionContent: e.target.value })}
                   className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -523,7 +586,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
                   type="submit"
                   className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-sm transition-colors"
                 >
-                  Save Chapter
+                  Save Science Chapter
                 </button>
               </div>
             </form>

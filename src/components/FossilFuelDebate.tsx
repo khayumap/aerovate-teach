@@ -108,7 +108,7 @@ export const FossilFuelDebate: React.FC<{ lang: Language }> = ({ lang }) => {
 
       {/* Balanced Resolution */}
       <div className="mt-3 p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-[11px] text-blue-900 leading-relaxed">
-        <strong>Teacher Anitha’s Golden Rule:</strong>{' '}
+        <strong>Teacher Mrs. Jesni’s Golden Rule:</strong>{' '}
         {lang === 'en'
           ? 'Both sides are right! While we currently need fossil fuels to power vehicles and cooking, we must strictly avoid wasting energy, walk short distances, and actively transition our homes to solar power!'
           : 'രണ്ടു വാദങ്ങളും പ്രധാനമാണ്! ഇന്ധനങ്ങൾ പാഴാക്കാതെ ഉപയോഗിക്കുകയും ക്രമേണ സൗരോർജ്ജത്തിലേക്ക് മാറുകയും വേണം.'}

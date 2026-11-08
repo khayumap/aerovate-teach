@@ -72,9 +72,9 @@ export const WhatsAppTeacherModal: React.FC<WhatsAppTeacherModalProps> = ({
             👩‍🏫
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-900">Mrs. Anitha Kumar</h3>
+            <h3 className="text-base font-bold text-slate-900">Mrs. Jesni</h3>
             <div className="text-xs text-slate-500">
-              Class 5 Teacher & Subject Lead · Govt Model LP School, Kerala
+              Science Teacher (Class 5A & 5B) · YAMANIYYA ENGLISH MEDIUM SCHOOL
             </div>
             <div className="text-xs font-semibold text-emerald-700 mt-0.5 flex items-center gap-1.5">
               <Phone className="w-3 h-3" />
@@ -86,8 +86,8 @@ export const WhatsAppTeacherModal: React.FC<WhatsAppTeacherModalProps> = ({
         {/* Instructions */}
         <p className="text-xs text-slate-600 mb-3">
           {lang === 'en'
-            ? 'Have a doubt in Rocks & Minerals or your homework? Send a message directly to teacher Mrs. Anitha Kumar on WhatsApp or phone!'
-            : 'പാഠഭാഗങ്ങളിലോ ക്വിസ്സിലോ സംശയമുണ്ടോ? ടീച്ചർ അനിത കുമാറിന് വാട്‌സാപ്പിൽ സന്ദേശം അയക്കാം!'}
+            ? 'Have a doubt in Science or your homework? Send a message directly to Mrs. Jesni on WhatsApp or phone!'
+            : 'സയൻസ് പാഠഭാഗങ്ങളിലോ ക്വിസ്സിലോ സംശയമുണ്ടോ? ടീച്ചർ മിസ്സിസ് ജെസ്നിക്ക് വാട്‌സാപ്പിൽ സന്ദേശം അയക്കാം!'}
         </p>
 
         {/* Quick Suggestion Chips */}
@@ -119,7 +119,7 @@ export const WhatsAppTeacherModal: React.FC<WhatsAppTeacherModalProps> = ({
               type="text"
               value={customMsg}
               onChange={(e) => setCustomMsg(e.target.value)}
-              placeholder={lang === 'en' ? 'Ask Teacher Anitha anything...' : 'ടീച്ചറോട് സംശയം ചോദിക്കൂ...'}
+              placeholder={lang === 'en' ? 'Ask Mrs. Jesni anything...' : 'ടീച്ചറോട് സംശയം ചോദിക്കൂ...'}
               className="flex-1 px-3 py-2 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <button

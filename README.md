@@ -1,8 +1,8 @@
-# 🎓 Aerovate - Class 5 Kerala Teacher's Teaching Platform (MERN Stack)
+# 🎓 Aerovate — Class 5A & 5B Science Teaching Platform
+### YAMANIYYA ENGLISH MEDIUM SCHOOL
+**Teacher: Mrs. Jesni · Helpline & WhatsApp: +91 7736419753**
 
-A complete, production-ready MERN stack educational platform built for Class 5 teachers and students in Kerala. Features bilingual (English + Malayalam) curriculum support, interactive science simulations, chapter reader, animated quizzes with stars and badges, teacher gradebook, and direct WhatsApp teacher assistance.
-
-> **Teacher Helpline & Support**: Mrs. Anitha Kumar · Phone: **+91 7736419753**
+A complete MERN stack educational platform built for **Mrs. Jesni** and students of **Class 5A & Class 5B** at **Yamaniyya English Medium School**. Features full bilingual (English + Malayalam) Science curriculum, interactive geological rock simulations, real-name student registration, animated quizzes with star rewards, and an AI Science Tutor powered by Gemini.
 
 ---
 
@@ -10,119 +10,96 @@ A complete, production-ready MERN stack educational platform built for Class 5 t
 
 - **Frontend**: React 19, Vite, Tailwind CSS v4, Lucide Icons, Canvas Confetti
 - **Backend**: Node.js, Express.js (in `/server`)
-- **Database**: MongoDB Atlas with Mongoose ODM (`process.env.MONGO_URI` with built-in in-memory fallback)
-- **Design System**: Blue `#2563eb`, Yellow `#facc15`, Green `#22c55e`, Google Font **Poppins** & **Noto Sans Malayalam**
+- **Database**: MongoDB Atlas with Mongoose ODM (`process.env.MONGO_URI` with built-in memory fallback)
+- **AI Engine**: Google Gemini API via `@google/genai` (`process.env.MY_GEMINI_KEY` or `process.env.GEMINI_API_KEY`)
+- **Hosting Target**: **Render** (and Replit / Cloud Run)
 
 ---
 
-## 🚀 How to Host on Replit (Step-by-Step)
+## 🚀 How to Host on Render (Step-by-Step)
 
-### Step 1: Import this Repository to Replit
-1. Open your browser and go to [https://replit.com](https://replit.com).
-2. Click **Create Repl** (+ button).
-3. Select **Import from GitHub** (or drag and drop your exported project files).
-4. Choose **Node.js** as the template if prompted.
+### Step 1: Push Code to GitHub
+Push this codebase to your GitHub repository (e.g. `https://github.com/your-username/aerovate-teach`).
 
-### Step 2: Set up a Free MongoDB Atlas Database
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) and create a free shared cluster (M0 free tier).
-2. Under **Database Access**, create a user (e.g. `aerovate_user`) and a secure password.
-3. Under **Network Access**, add IP address `0.0.0.0/0` (allow access from anywhere, required for Replit dynamic IPs).
-4. Click **Connect** > **Drivers** (Node.js) and copy the connection string:
+### Step 2: Create a Free MongoDB Atlas Database
+1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create a free M0 cluster.
+2. In **Database Access**, create a user (e.g. `jesni_admin`) and password.
+3. In **Network Access**, add IP `0.0.0.0/0` (allow access from all IPs so Render can connect).
+4. Click **Connect** $\to$ **Drivers** $\to$ Copy the connection URI:
    ```text
-   mongodb+srv://aerovate_user:<password>@cluster0.xyz.mongodb.net/aerovate_teaching_db?retryWrites=true&w=majority
+   mongodb+srv://jesni_admin:<password>@cluster0.mongodb.net/aerovate_science_db?retryWrites=true&w=majority
    ```
-   *(Replace `<password>` with your database user password)*
 
-### Step 3: Add `MONGO_URI` in Replit Secrets (Environment Variables)
-1. In your Replit editor, look at the left sidebar and click on **Tools** > **Secrets** (the 🔒 padlock icon).
-2. Click **New Secret** or **Add Secret**:
-   - **Key**: `MONGO_URI`
-   - **Value**: Your MongoDB Atlas connection string from Step 2
-3. Add a second secret (optional):
-   - **Key**: `PORT`
-   - **Value**: `5000`
-4. Add teacher contact secret (optional, defaults to teacher's number):
-   - **Key**: `TEACHER_PHONE`
-   - **Value**: `7736419753`
-
-### Step 4: Run the Application
-1. In the Replit **Shell** / **Console**, install dependencies (if not done automatically):
-   ```bash
-   npm install
-   ```
-2. Build the client bundle:
-   ```bash
-   npm run build
-   ```
-3. Start the production server:
-   ```bash
-   npm start
-   ```
-   *Or for full live dev with hot reloads, run:*
-   ```bash
-   npm run dev
-   ```
-4. Replit will automatically open the Webview with the live application!
+### Step 3: Deploy on Render (Web Service)
+1. Go to your [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** $\to$ **Web Service**.
+3. Select your GitHub repository.
+4. Configure service settings:
+   - **Name**: `aerovate-teach`
+   - **Environment**: `Node`
+   - **Region**: Singapore or Frankfurt (closest to India/Kerala)
+   - **Branch**: `main`
+   - **Build Command**:
+     ```bash
+     npm install && npm run build
+     ```
+   - **Start Command**:
+     ```bash
+     npm start
+     ```
+5. Add Environment Variables under **Environment**:
+   - `MONGO_URI`: `mongodb+srv://jesni_admin:<password>@cluster0.mongodb.net/aerovate_science_db?retryWrites=true&w=majority`
+   - `MY_GEMINI_KEY`: Your Gemini API Key from Google AI Studio
+   - `TEACHER_PHONE`: `7736419753`
+   - `TEACHER_NAME`: `Mrs. Jesni`
+   - `SCHOOL_NAME`: `YAMANIYYA ENGLISH MEDIUM SCHOOL`
+   - `APP_URL`: `https://aerovate-teach.onrender.com/`
+6. Click **Deploy Web Service**! Render will build the Vite frontend into `dist`, start the Express server, connect to MongoDB Atlas, and launch your live site.
 
 ---
 
-## 🔑 Login Credentials
+## 🔑 Login & Access Information
 
-### 👩‍🏫 Teacher Login
-- **Email**: `teacher@aerovate.org` *(or your own email)*
-- **Password**: `aerovate123`
-- **Features**: Real-time stats, Add/Edit/Delete Chapters, Create Quizzes, View Student Roster, Gradebook, Reset Curriculum
+### 👩‍🏫 Teacher Room
+- **Email**: `teacher@aerovate.org`
+- **Password**: `students_of_jesni`
+*(Fields are blank by default so the teacher types them manually)*
+- **Dashboard Features**:
+  - Live analytics: Total Science Chapters, Class 5A student count, Class 5B student count, and Average Score.
+  - Class 5A & Class 5B student rosters showing real registered names, roll numbers, stars, and badges.
+  - Gradebook with student submissions and score percentages.
+  - Add new Science chapters and reset syllabus anytime.
 
-### 🎒 Student Login (Super Easy for Class 5 Kids!)
-- **Name**: e.g., `Aadhya Menon` or `Rahul Nair`
-- **Roll Number**: Any number (e.g., `1`, `2`, `3`, `12`)
-- **Features**: Interactive chapter reading, 3D rock classification game, Rock Detective challenge, bilingual voice read-aloud, instant quiz scoring with stars and badges, direct WhatsApp teacher ask button (`+91 7736419753`).
-
----
-
-## 📁 Project Directory Structure
-
-```text
-├── server/                    # Node.js + Express Backend
-│   ├── models/                # Mongoose Models
-│   │   ├── Chapter.js         # Chapter schema & bilingual content
-│   │   ├── Quiz.js            # Quiz questions, answers & badges
-│   │   ├── Student.js         # Student profiles & stars
-│   │   └── Submission.js      # Student quiz answers & scorecards
-│   ├── routes/
-│   │   └── api.js             # REST API routes (/api/*)
-│   ├── db.js                  # MongoDB Atlas connection + in-memory fallback
-│   ├── seedData.js            # Class 5 Rocks & Minerals curriculum
-│   └── server.js              # Standalone Express server for Replit
-├── src/                       # React 19 Frontend
-│   ├── components/            # Reusable UI components
-│   │   ├── Navbar.tsx         # Bilingual header & role switch
-│   │   ├── RockDetective.tsx  # Interactive rock guessing game
-│   │   ├── MineralClassifier.tsx # Metallic vs Non-metallic drag/tap game
-│   │   └── AudioReader.tsx    # Text-to-speech audio reader
-│   ├── pages/                 # Application Views
-│   │   ├── StudentHome.tsx    # Kid-friendly dashboard & subject picker
-│   │   ├── ChapterView.tsx    # Interactive lesson reader (Rocks & Minerals)
-│   │   ├── QuizView.tsx       # 10-Question animated quiz
-│   │   ├── TeacherDashboard.tsx # Teacher stats, chapter editor & gradebook
-│   │   └── TeacherLogin.tsx   # Teacher sign-in
-│   ├── types.ts               # Shared TypeScript definitions
-│   ├── App.tsx                # App routing & context state
-│   ├── main.tsx               # Client entry point
-│   └── index.css              # Tailwind CSS v4 styling & Poppins font
-├── .env.example               # Template environment configuration
-├── package.json               # Full-stack dependencies & scripts
-├── server.ts                  # Development server with Vite middleware
-├── tsconfig.json              # TypeScript compilation rules
-├── vite.config.ts             # Vite configuration with API proxy
-└── README.md                  # This guide
-```
+### 🎒 Student Access (Class 5A & 5B)
+- **New Students**: Click **"Student Login"** $\to$ **"New Student? Sign Up"**:
+  - Enter Real Full Name (e.g. `Muhammed Bilal`)
+  - Select Class Division (**Class 5A** or **Class 5B**)
+  - Enter School Roll Number (e.g. `1`, `2`, `14`)
+  - Pick a fun learning avatar emoji (🦁, 🐯, 🚀, 💎...)
+- **Registered Students**: Choose **Class 5A** or **5B** and enter Roll Number to log in.
+- Sessions are saved in the browser so students and teachers remain logged in on page refresh!
 
 ---
 
-## 📞 Teacher & Institution Contact
+## 📚 Science Curriculum Included
 
-- **Institution**: Aerovate Learning Platform
-- **Teacher**: Mrs. Anitha Kumar
+1. **Chapter 1: Rocks and Minerals (പാറകളും ധാതുക്കളും)**
+   - All 7 sections transcribed directly from the Class 5 textbook:
+     - 1. What are Minerals? (Earth's crust, mining, ores)
+     - 2. Metallic vs Non-Metallic Minerals + **Quick Check 1 Sorting Game**
+     - 3. Earth's 3 Layers (Crust, Mantle, Core)
+     - 4. Igneous Rocks (Magma, Lava, Granite, Pumice that floats on water, Basalt, Obsidian)
+     - 5. Sedimentary Rocks (Sediments, Fossils, Sandstone Red Fort, Limestone chalk, Shale, Conglomerate)
+     - 6. Metamorphic Rocks (Shale $\to$ Slate, Limestone $\to$ Marble Taj Mahal, Quartzite, Gneiss) + **Quick Check 2 Matcher** + **Rock Detective Mystery Game**
+     - 7. Fossil Fuels (Coal & Petroleum) + **Mini Debate** + **Interactive Vocabulary Flashcards**
+2. **Chapter 2: Living World & Ecosystems (ജീവികളുടെ ലോകം)**
+3. **Chapter 3: States of Matter & Properties of Air (പദാർത്ഥങ്ങളുടെ അവസ്ഥകൾ)**
+4. **Chapter 4: Simple Machines & Energy (ലളിത യന്ത്രങ്ങൾ)**
+
+---
+
+## 📞 Support & Helpline
+
+- **Teacher Lead**: Mrs. Jesni
+- **School**: YAMANIYYA ENGLISH MEDIUM SCHOOL
 - **Direct Phone & WhatsApp**: **+91 7736419753**
-- **Syllabus**: Kerala State Board & CBSE Class 5 Science (EVS)

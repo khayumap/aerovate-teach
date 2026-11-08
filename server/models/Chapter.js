@@ -45,7 +45,7 @@ const ChapterSchema = new mongoose.Schema({
   sections: [SectionSchema],
   audioSummaryUrl: { type: String, default: '' },
   teacherPhone: { type: String, default: '7736419753' },
-  teacherName: { type: String, default: 'Mrs. Anitha Kumar' },
+  teacherName: { type: String, default: 'Mrs. Jesni' },
   estimatedReadTimeMinutes: { type: Number, default: 15 },
   isActive: { type: Boolean, default: true }
 }, {

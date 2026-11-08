@@ -5,6 +5,7 @@ const SubmissionSchema = new mongoose.Schema({
   quizTitle: { type: String, required: true },
   studentName: { type: String, required: true },
   rollNumber: { type: Number, required: true },
+  division: { type: String, enum: ['5A', '5B'], default: '5A' },
   score: { type: Number, required: true },
   totalQuestions: { type: Number, required: true },
   percentage: { type: Number, required: true },
