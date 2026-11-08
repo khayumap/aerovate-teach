@@ -71,8 +71,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
 
-          {/* Desktop & Tablet Landscape Navigation Links (1024px+) */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-semibold text-slate-600">
+          {/* Full navigation is reserved for wide desktop layouts. */}
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-6 text-sm font-semibold text-slate-600">
             <button
               onClick={() => handleTabClick('home')}
               className={`hover:text-blue-600 transition-colors whitespace-nowrap shrink-0 pb-1 border-b-2 ${
@@ -145,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             {/* Desktop / Tablet User Login / Profile status */}
-            <div className="hidden sm:flex items-center gap-1.5 lg:gap-2">
+            <div className="hidden xl:flex items-center gap-1.5 2xl:gap-2">
               {currentUser.role === 'guest' && (
                 <>
                   <button
@@ -219,10 +219,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
 
-            {/* Tablet & Mobile Hamburger Menu Toggle Button (Visible on screens < 1024px) */}
+            {/* Tablet & Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+              className="xl:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -235,7 +235,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Slide-Down Navigation & Actions Drawer (For Mobile & Tablet Portrait) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
+        <div className="xl:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
           
           {/* User Status Strip */}
           {currentUser.role === 'student' && currentUser.student ? (

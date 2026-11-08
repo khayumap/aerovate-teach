@@ -62,7 +62,7 @@ Push this codebase to your GitHub repository (e.g. `https://github.com/your-user
 
 ### 👩‍🏫 Teacher Room
 - **Email**: `teacher@aerovate.org`
-- **Password**: `students_of_jesni`
+- **Password**: `jesni@teacher`
 *(Fields are blank by default so the teacher types them manually)*
 - **Dashboard Features**:
   - Live analytics: Total Science Chapters, Class 5A student count, Class 5B student count, and Average Score.

@@ -32,7 +32,7 @@ router.get('/health', (req, res) => {
   });
 });
 
-// Teacher Login (Strict credentials: teacher@aerovate.org / students_of_jesni)
+// Teacher Login
 router.post('/auth/teacher-login', (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -42,10 +42,7 @@ router.post('/auth/teacher-login', (req, res) => {
   const cleanEmail = email.trim().toLowerCase();
   const cleanPass = password.trim();
 
-  // Strict check as requested:
-  // username: teacher@aerovate.org
-  // password: students_of_jesni
-  if (cleanEmail === 'teacher@aerovate.org' && cleanPass === 'students_of_jesni') {
+  if (cleanEmail === 'teacher@aerovate.org' && cleanPass === 'jesni@teacher') {
     return res.json({
       success: true,
       role: 'teacher',

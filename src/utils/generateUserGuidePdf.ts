@@ -44,7 +44,7 @@ export function generateUserGuidePdf() {
 
   doc.setFontSize(9);
   doc.setTextColor(254, 240, 138); // light yellow
-  doc.text('Official User Guide & Handbook · For Class 5A & 5B Students & Teacher', margin, 28);
+  doc.text('Student User Guide · For Class 5A & 5B', margin, 28);
   doc.text('Teacher: Mrs. Jesni · Helpline: +91 7736419753 · Built by Adnan Ahmad A P', margin, 34);
 
   // SECTION: PART 1 - STUDENT GUIDE
@@ -165,136 +165,6 @@ export function generateUserGuidePdf() {
   doc.text('Page 1 of 2 · Class 5 Science User Guide · YAMANIYYA ENGLISH MEDIUM SCHOOL', margin, pageHeight - 8);
   doc.text('Copyrights Adnan Ahmad A P', contentWidth - 10, pageHeight - 8);
 
-  // ==========================================
-  // PAGE 2: TEACHER GUIDE & PLATFORM SPECS
-  // ==========================================
-  doc.addPage();
-
-  // Top Accent Banner
-  doc.setFillColor(darkSlate[0], darkSlate[1], darkSlate[2]);
-  doc.rect(0, 0, pageWidth, 28, 'F');
-  doc.setFillColor(primaryBlue[0], primaryBlue[1], primaryBlue[2]);
-  doc.rect(0, 28, pageWidth, 3, 'F');
-
-  doc.setTextColor(255, 255, 255);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(14);
-  doc.text('PART 2: TEACHER USER GUIDE (FOR MRS. JESNI)', margin, 12);
-
-  doc.setFontSize(8.5);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(203, 213, 225);
-  doc.text('Class 5A & 5B Science Administration · Yamaniyya English Medium School', margin, 18);
-  doc.text('Teacher Contact: +91 7736419753 · teacher@aerovate.org', margin, 23);
-
-  y = 38;
-
-  // Teacher Login Details Box
-  doc.setFillColor(239, 246, 255); // light blue
-  doc.roundedRect(margin, y, contentWidth, 24, 2, 2, 'F');
-  doc.setDrawColor(191, 219, 254);
-  doc.roundedRect(margin, y, contentWidth, 24, 2, 2, 'D');
-
-  doc.setTextColor(primaryBlue[0], primaryBlue[1], primaryBlue[2]);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.text('Teacher Room Authentication (Manual Sign In)', margin + 4, y + 6);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8.5);
-  doc.setTextColor(darkSlate[0], darkSlate[1], darkSlate[2]);
-  doc.text('• Username / Email: teacher@aerovate.org', margin + 4, y + 11);
-  doc.text('• Password: students_of_jesni', margin + 4, y + 15.5);
-  doc.setTextColor(mutedSlate[0], mutedSlate[1], mutedSlate[2]);
-  doc.text('• For security, credentials are not auto-filled; the teacher writes them manually.', margin + 4, y + 20);
-
-  y += 29;
-
-  // Teacher Dashboard Capabilities
-  doc.setFillColor(bgLight[0], bgLight[1], bgLight[2]);
-  doc.roundedRect(margin, y, contentWidth, 30, 2, 2, 'F');
-  doc.setDrawColor(226, 232, 240);
-  doc.roundedRect(margin, y, contentWidth, 30, 2, 2, 'D');
-
-  doc.setTextColor(darkSlate[0], darkSlate[1], darkSlate[2]);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.text('Managing the Teacher Dashboard', margin + 4, y + 6);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8.5);
-  doc.setTextColor(mutedSlate[0], mutedSlate[1], mutedSlate[2]);
-  doc.text('• Live Roster: View real student names registered in Class 5A and Class 5B with roll numbers.', margin + 4, y + 11);
-  doc.text('• Real-time Gradebook: Track student quiz scores, percentage, date submitted, and status.', margin + 4, y + 15.5);
-  doc.text('• Filter by Division: Toggle between "All", "Class 5A", and "Class 5B" rosters in one click.', margin + 4, y + 20);
-  doc.text('• Add New Chapters: Easily add upcoming Science chapters with title, summary, and sections.', margin + 4, y + 24.5);
-
-  y += 35;
-
-  // Multi-Device Compatibility
-  doc.setFillColor(bgLight[0], bgLight[1], bgLight[2]);
-  doc.roundedRect(margin, y, contentWidth, 24, 2, 2, 'F');
-  doc.setDrawColor(226, 232, 240);
-  doc.roundedRect(margin, y, contentWidth, 24, 2, 2, 'D');
-
-  doc.setTextColor(darkSlate[0], darkSlate[1], darkSlate[2]);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.text('Device Compatibility (Mobile, Tablet, Desktop)', margin + 4, y + 6);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8.5);
-  doc.setTextColor(mutedSlate[0], mutedSlate[1], mutedSlate[2]);
-  doc.text('• Mobile Phones: Adaptive layout with fixed bottom navigation bar for easy thumb access.', margin + 4, y + 11);
-  doc.text('• Tablets (iPad & Android): Optimized 2-column grids and touch-friendly controls.', margin + 4, y + 15.5);
-  doc.text('• Desktop & Laptops: Full-width classroom view with high-resolution specimen cards.', margin + 4, y + 20);
-
-  y += 29;
-
-  // Technical & Hosting Information
-  doc.setFillColor(bgLight[0], bgLight[1], bgLight[2]);
-  doc.roundedRect(margin, y, contentWidth, 28, 2, 2, 'F');
-  doc.setDrawColor(226, 232, 240);
-  doc.roundedRect(margin, y, contentWidth, 28, 2, 2, 'D');
-
-  doc.setTextColor(darkSlate[0], darkSlate[1], darkSlate[2]);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.text('Technical Stack & Cloud Hosting', margin + 4, y + 6);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8.5);
-  doc.setTextColor(mutedSlate[0], mutedSlate[1], mutedSlate[2]);
-  doc.text('• Frontend: React + Vite + Tailwind CSS + Lucide Icons.', margin + 4, y + 11);
-  doc.text('• Backend: Node.js + Express.js API.', margin + 4, y + 15.5);
-  doc.text('• Database: MongoDB Atlas (live connected cluster with zero mock students).', margin + 4, y + 20);
-  doc.text('• Deployment: Replit and Render ready (aerovate-teach.onrender.com).', margin + 4, y + 24.5);
-
-  y += 34;
-
-  // Creator & Copyright Box
-  doc.setFillColor(254, 243, 199); // light amber
-  doc.roundedRect(margin, y, contentWidth, 22, 2, 2, 'F');
-  doc.setDrawColor(251, 191, 36);
-  doc.roundedRect(margin, y, contentWidth, 22, 2, 2, 'D');
-
-  doc.setTextColor(180, 83, 9); // amber-700
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.text('Platform Developer & Copyright Information', margin + 4, y + 6);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8.5);
-  doc.setTextColor(120, 53, 15);
-  doc.text('Copyrights Adnan Ahmad A P. All rights reserved.', margin + 4, y + 11);
-  doc.text('Designed and developed by Adnan Ahmad A P for Mrs. Jesni and Class 5 at Yamaniyya English Medium School.', margin + 4, y + 15.5);
-
-  // Footer for Page 2
-  doc.setFontSize(8);
-  doc.setTextColor(mutedSlate[0], mutedSlate[1], mutedSlate[2]);
-  doc.text('Page 2 of 2 · Class 5 Science User Guide · YAMANIYYA ENGLISH MEDIUM SCHOOL', margin, pageHeight - 8);
-  doc.text('Copyrights Adnan Ahmad A P', contentWidth - 10, pageHeight - 8);
-
-  // Save the PDF directly to download
+  // Save the student guide PDF directly to download
   doc.save('Aerovate_Class5_Science_User_Guide.pdf');
 }
